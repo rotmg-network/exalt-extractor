@@ -12,12 +12,14 @@ from utils.Logger import Logger, get_input
 
 logger = Logger()
 
+# the default path for the Exalt Unity resources on all default Windows installs
 PATH_WINDOWS = join("Documents", "RealmOfTheMadGod", "Production", "RotMG Exalt_Data")
+# the default path for the Exalt Unity resources on all default macOS installs
 PATH_MACOS = join("RealmOfTheMadGod", "Production", "RotMGExalt.app", "Contents", "Resources", "Data")
 
 
 def get_resource_path() -> str:
-    """ Try to automatically find the Exalt resource path based on OS and the current user """
+    """ Attempt to automatically find the Exalt resource path based on OS and the current user """
     operating_sys = system()
     path = ""
     if operating_sys == "Windows":
@@ -136,22 +138,27 @@ class Resources:
         logger.success(f"Parsed {res_count} total assets!")
 
     def parse_audioclip(self, obj) -> None:
+        """ Read a AudioClip asset object and append to the tracked assets """
         asset = AudioClip(obj.read())
         self.all_resources["AudioClip"].append(asset)
 
     def parse_buildsettings(self, obj) -> None:
+        """ Read a BuildSettings asset object and append to the tracked assets """
         asset = BuildSettings(obj.read())
         self.all_resources["BuildSettings"].append(asset)
 
     def parse_gameobject(self, obj) -> None:
+        """ Read a GameObject asset object and append to the tracked assets """
         asset = GameObject(obj.read())
         self.all_resources["GameObject"].append(asset)
 
     def parse_monobehaviour(self, obj) -> None:
+        """ Read a MonoBehaviour asset object and append to the tracked assets """
         asset = MonoBehaviour(obj.read())
         self.all_resources["MonoBehaviour"].append(asset)
 
     def parse_monoscript(self, obj) -> None:
+        """ Read a MonoScript asset object and append to the tracked assets """
         asset = MonoScript(obj.read())
         # _packets
         if asset.packet_outgoing:
@@ -170,10 +177,12 @@ class Resources:
         self.all_resources["MonoScript"].append(asset)
 
     def parse_spriteatlas(self, obj) -> None:
+        """ Read a SpriteAtlas asset object and append to the tracked assets """
         asset = SpriteAtlas(obj.read())
         self.all_resources["SpriteAtlas"].append(asset)
 
     def parse_textasset(self, obj) -> None:
+        """ Read a TextAsset asset object and append to the tracked assets """
         asset = TextAsset(obj.read())
         if asset.spritesheet:
             self._spritesheet = asset.file_data
@@ -184,6 +193,7 @@ class Resources:
         self.all_resources["TextAsset"].append(asset)
 
     def parse_texture2d(self, obj) -> None:
+        """ Read a Texture2D asset object and append to the tracked assets """
         asset = Texture2D(obj.read())
         self.all_resources["Texture2D"].append(asset)
 

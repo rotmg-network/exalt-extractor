@@ -1,5 +1,3 @@
-
-
 class Files:
     """ A helper class for creating and modifying files """
 

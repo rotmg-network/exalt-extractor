@@ -1,7 +1,6 @@
 from os import mkdir
 from os.path import exists, join
 
-
 from utils.Logger import Logger
 from utils import Resources, ActionScriptExtractor
 
@@ -19,6 +18,8 @@ def assert_path_exists(path: str) -> bool:
 
 
 class UnityExtractor:
+    """ A class that extracts required asset types from all available Unity resource files """
+
     def __init__(self, resources: Resources, output_path: str):
         self.resources = resources
         self.output_path = output_path
@@ -93,6 +94,7 @@ class UnityExtractor:
             logger.success(f"Created {sheet_count} matching ActionScript files to import the XML files.")
 
     def extract_spritesheets(self, create_actionscript: bool = False) -> None:
+        """ Extract 'spritesheet.json' from a Unity TextAsset asset and optionally create an ActionScript file """
         print()  # line break
         final_path = join(self.output_path, "spritesheets")
         # ensure the 'spritesheets' folder exists in the output directory
@@ -147,7 +149,7 @@ class UnityExtractor:
         """ Save all parsed Texture2D assets to .png files """
         print()  # line break
         final_path = join(self.output_path, "texture2d")
-        # ensure the 'texture2d' folder exists in the output directory
+        # ensure the 'Texture2D' folder exists in the output directory
         if not assert_path_exists(final_path):
             logger.error("Could not extract Texture2D images to the output folder.")
             return

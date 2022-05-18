@@ -1,7 +1,7 @@
 import datetime
 import os.path
-import sys
 import logging
+from sys import stdout
 from colorama import Fore, Back, Style, init
 
 
@@ -10,7 +10,7 @@ def test_colors() -> None:
     for i in range(0, 16):
         for j in range(0, 16):
             code = str(i * 16 + j)
-            sys.stdout.write(u"\u001b[38;5;" + code + "m " + code.ljust(4))
+            stdout.write(u"\u001b[38;5;" + code + "m " + code.ljust(4))
         print(u"\u001b[0m")
 
 
@@ -52,6 +52,7 @@ def get_input(message: str) -> str:
 
 
 class CustomLogLevel:
+    """ Class for adding custom LogLevels mapped to integers for the inbuilt logging module """
     SUCCESS = 15
 
 
@@ -61,6 +62,7 @@ class ColorFormatter(logging.Formatter):
     def __init__(self, fmt):
         super().__init__()
         self.fmt = fmt
+        # initialize all the LogLevel format types
         self.FORMATS = {
             logging.DEBUG: Fore.LIGHTMAGENTA_EX + self.fmt + Style.RESET_ALL,
             logging.INFO: Fore.CYAN + self.fmt + Style.RESET_ALL,
@@ -71,6 +73,7 @@ class ColorFormatter(logging.Formatter):
         }
 
     def format(self, record):
+        """ Custom format function for adding a more readable date/time and custom LogLevels """
         log_format = self.FORMATS.get(record.levelno)
         time = get_log_time(datetime.datetime.now())
         formatter = logging.Formatter(time + " " + log_format)

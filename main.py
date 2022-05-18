@@ -1,6 +1,6 @@
 import os
-import sys
 import time
+from sys import argv, exit as exit_program
 from argparse import ArgumentParser, Namespace
 from utils import Logger, Resources, UnityExtractor
 
@@ -41,13 +41,13 @@ def assert_path_exists(path: str):
             os.mkdir(path)
         except Exception as e:
             logger.critical(f"Could not create path '{path}': {e}\n")
-            sys.exit(1)
+            exit_program(1)
 
 
 if __name__ == '__main__':
     desc = "Extract game data from the RotMG Exalt Unity resource files."
     desc += " If no arguments are passed, it will try to extract all possible assets."
-    usage = f"python3 {sys.argv[0]} [optional arguments]"
+    usage = f"python3 {argv[0]} [optional arguments]"
 
     parser = ArgumentParser(description=desc, usage=usage)
     parser.add_argument('-o', '--output', type=str, default="output",
