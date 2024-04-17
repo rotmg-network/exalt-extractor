@@ -10,7 +10,7 @@ logger = Logger()
 def main(args: Namespace):
     """ The entry point of the program """
     start_time = time.time()
-    logger.info(f"Arguments: {vars(args)}\n")
+    # logger.info(f"Arguments: {vars(args)}\n")
 
     # check for a custom output path or fallback to the default
     output_path = args.output
