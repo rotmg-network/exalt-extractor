@@ -17,7 +17,7 @@ class SpriteAtlas:
             self.data = None
             self.name = None
             logger.warn(f"Failed parsing SpriteAtlas: {e}")
-            print(f"{vars(asset)}\n")
+            # print(f"{vars(asset)}\n")
 
     def __str__(self) -> str:
         if self.data is None:

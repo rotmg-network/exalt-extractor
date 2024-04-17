@@ -16,4 +16,4 @@ class GameObject:
             self.name = "Unknown"
             self.namespace = "Unknown"
             logger.warn(f"Failed parsing GameObject: {e}")
-            print(f"{vars(asset)}\n")
+            # print(f"{vars(asset)}\n")

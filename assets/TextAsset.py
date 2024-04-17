@@ -22,7 +22,7 @@ class TextAsset:
         except Exception as e:
             self.data, self.name = None, None
             logger.error(f"Error loading TextAsset: {e}")
-            print(f"{vars(asset)}\n")
+            # print(f"{vars(asset)}\n")
 
     def create_actionscript(self, file_type: str = "xml", package_name: str = "kabam.rotmg.assets") -> str:
         """ Return a full ActionScript3 class file that will import the TextAsset as a class """

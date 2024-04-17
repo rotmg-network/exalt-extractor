@@ -31,7 +31,7 @@ class Texture2D:
             self.data = None
             self.name = None
             logger.warn(f"Failed parsing Texture2D: {e}")
-            print(f"{vars(asset)}\n")
+            # print(f"{vars(asset)}\n")
 
     def __str__(self) -> str:
         if self.data is None:

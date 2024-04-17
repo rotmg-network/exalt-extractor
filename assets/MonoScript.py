@@ -38,7 +38,7 @@ class MonoScript:
             self.name = "Unknown"
             self.namespace = "Unknown"
             logger.warn(f"Failed parsing MonoScript: {e}")
-            print(f"{vars(asset)}\n")
+            # print(f"{vars(asset)}\n")
 
     def parse_namespace(self, namespace: str = None):
         """ determine the type of object by parsing the namespace """
